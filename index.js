@@ -9,11 +9,11 @@ const cartRoute = require("./routes/Cart");
 const stripeRoute = require("./routes/stripe");
 const cors = require("cors");
 
+dotenv.config();
+
 const PORT = process.env.PORT || 5000;
 
 const app = express();
-
-dotenv.config();
 
 mongoose
   .connect(process.env.MONGO_URL)
@@ -33,5 +33,5 @@ app.use("/api/carts", cartRoute);
 app.use("/api/checkout", stripeRoute);
 
 app.listen(PORT, () => {
-  console.log("Hello World");
+  console.log("Hello World ", PORT);
 });
